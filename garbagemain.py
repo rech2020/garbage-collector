@@ -1,6 +1,6 @@
 import discord
 from discord.ext import commands
-import time
+import asyncio
 from random import randint
 
 bot = commands.Bot(command_prefix='>collector ', self_bot=True)
@@ -20,7 +20,7 @@ async def on_message(message):
         # check if the message doesn't have bot's username
         if not bot.user.name in message.content and "cat" in message.content and "appeared" in message.content:
             # wait a second to make it not so suspiciously good
-            time.sleep(randint(1,5))
+            asyncio.sleep(randint(1,5))
             await message.channel.send("cat")
 
 
