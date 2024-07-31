@@ -25,8 +25,19 @@ async def on_message(message):
 
 
 @bot.command
-async def restart():
-    eval("python garbagemain.py")
-    exit()
+async def restart(ctx):
+    await ctx.reply("perms issue")
+
+@bot.command()
+async def image(ctx):
+    # Ensure the bot has permissions to send messages
+    await ctx.message.channel.set_permissions(bot.user, send_messages=True)
+    
+    # Open the image file in binary mode
+    with open('do_you_think_even_the_worst_person_can_change.png', 'rb') as f:
+        image = discord.File(f, filename='do_you_think_even_the_worst_person_can_change.png')
+    
+    # Send the image to the user who invoked the command
+    await ctx.author.send(file=image)
 
 bot.run(open("collectorToken.txt").read())
