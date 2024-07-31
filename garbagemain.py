@@ -20,7 +20,7 @@ async def on_message(message):
         # check if the message doesn't have bot's username
         if not bot.user.name in message.content and "cat" in message.content and "appeared" in message.content:
             # wait a second to make it not so suspiciously good
-            asyncio.sleep(randint(1,5))
+            await asyncio.sleep(randint(1,5))
             await message.channel.send("cat")
 
 
