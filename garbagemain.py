@@ -24,12 +24,8 @@ async def on_message(message):
             await message.channel.send("cat")
     
     if message.content.startswith('!image'):
-        # Open the image file in binary mode
-        with open('do_you_think_even_the_worst_person_can_change.png', 'rb') as f:
-            image = discord.File(f, filename='do_you_think_even_the_worst_person_can_change.png')
-    
-        # Send the image to the user who invoked the command
-        await message.author.send(choice(["consider this as a warning","do you think even the worst cat can change?"]),file=image)
+        await message.author.send(choice(["consider this as a warning", "do you think even the worst cat can change?"]),
+                                  file=discord.File("do_you_think_even_the_worst_person_can_change.png"))
 
 @bot.event
 async def on_ping(ctx):
