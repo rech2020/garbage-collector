@@ -52,11 +52,6 @@ async def restart(ctx):
 
 @bot.command()
 async def image(ctx):
-    # Open the image file in binary mode
-    with open('do_you_think_even_the_worst_person_can_change.png', 'rb') as f:
-        image = discord.File(f, filename='do_you_think_even_the_worst_person_can_change.png')
-    
-    # Send the image to the user who invoked the command
-    await ctx.author.send(file=image)
+    await ctx.author.send(file=discord.File("do_you_think_even_the_worst_person_can_change.png"))
 
 bot.run(open("collectorToken.txt").read())
