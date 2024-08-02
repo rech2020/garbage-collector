@@ -20,7 +20,7 @@ async def on_message(message):
         # check if the message doesn't have bot's username
         if not bot.user.name in message.content and "cat" in message.content and "appeared" in message.content:
             # wait a second to make it not so suspiciously good
-            await asyncio.sleep(randint(1,5))
+            await asyncio.sleep(randint(0,5))
             await message.channel.send("cat")
     
     if message.content.startswith('!image'):
@@ -51,9 +51,6 @@ async def on_message(message):
             print("getting daily package")
             await garden["claim"](message.channel, package="daily")
         return
-
-#@bot.event
-#async def on_ping(ctx):
 
 @bot.command
 async def restart(ctx):
