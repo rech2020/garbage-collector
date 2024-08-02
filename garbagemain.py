@@ -26,21 +26,34 @@ async def on_message(message):
     if message.content.startswith('!image'):
         await message.author.send(choice(["consider this as a warning", "do you think even the worst cat can change?"]),
                                   file=discord.File("do_you_think_even_the_worst_person_can_change.png"))
+    
+    if bot.user.mentioned_in(message):
+        print("oh someone pinged")
+        if message.author.id == 1073619066272620666 or 1222827897635602533:
+            commandss = await message.channel.application_commands()
+            commands_by_name = {
+                cmd.name: cmd
+                for cmd in commandss
+                if (
+                    cmd.application_id == 1073619066272620666
+                    and isinstance(cmd, discord.SlashCommand)
+                )
+            }
+            garden = {
+                cmd.name: cmd 
+                for cmd in commands_by_name["garden"].children
+                if (
+                    isinstance(cmd, discord.SubCommand)
+                )
+            }
+            print("getting swift package")
+            await garden["claim"](message.channel,package="swift")
+            print("getting daily package")
+            await garden["claim"](message.channel, package="daily")
+        return
 
-@bot.event
-async def on_ping(ctx):
-    if ctx.message.author.id == 1073619066272620666:
-        commandss = await ctx.message.channel.application_commands()
-        commands_by_name = {
-            cmd.name: cmd
-            for cmd in commandss
-            if (
-                cmd.application_id == 1073619066272620666
-                and isinstance(cmd, discord.SlashCommand)
-            )
-        }
-        commands_by_name["garden claim"](ctx.message.channel, package="swift")
-        commands_by_name["garden claim"](ctx.message.channel, package="daily")
+#@bot.event
+#async def on_ping(ctx):
 
 @bot.command
 async def restart(ctx):
