@@ -33,7 +33,7 @@ async def on_ping(ctx):
         commandss = await ctx.message.channel.application_commands()
         commands_by_name = {
             cmd.name: cmd
-            for cmd in commands
+            for cmd in commandss
             if (
                 cmd.application_id == 1073619066272620666
                 and isinstance(cmd, discord.SlashCommand)
