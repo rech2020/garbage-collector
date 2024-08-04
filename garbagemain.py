@@ -29,7 +29,7 @@ async def on_message(message):
     
     if bot.user.mentioned_in(message):
         print("oh someone pinged")
-        if message.author.id == 1073619066272620666 or 1222827897635602533:
+        if message.author.id == 1073619066272620666:
             commandss = await message.channel.application_commands()
             commands_by_name = {
                 cmd.name: cmd
